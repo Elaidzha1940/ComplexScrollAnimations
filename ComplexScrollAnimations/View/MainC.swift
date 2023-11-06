@@ -23,6 +23,7 @@ struct MainC: View {
                 VStack(alignment: .leading, spacing: 15) {
                     Text("Elid.ev")
                         .font(.system(size: 40, weight: .bold, design: .rounded))
+                        .frame(height: 50)
                         .padding()
                     
                     GeometryReader {
@@ -37,7 +38,9 @@ struct MainC: View {
                                     
                                 }
                             }
+                            .scrollTargetLayout()
                         }
+                        .scrollTargetBehavior(.paging)
                     }
                     .frame(height: 120)
                 }
@@ -73,6 +76,7 @@ struct MainC: View {
     func CardView(_ card: Card) -> some View {
         GeometryReader {
             let rect = $0.frame(in: .scrollView(axis: .vertical))
+            let minY = rect.minY
             
             ZStack {
                 Rectangle()
@@ -85,10 +89,23 @@ struct MainC: View {
                                 Circle()
                                     .fill(.white.opacity(0.2))
                             }
-                            .scaleEffect(2, anchor: .topTrailing)
+                            .scaleEffect(2, anchor: .topLeading)
                             .offset(x: -40, y: -50)
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 30, style: .circular))
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Spacer(minLength: 0)
+                    
+                    Text("Current Balance")
+                        .font(.system(size: 15, weight: .medium, design: .rounded))
+                    
+                    Text(card.balance)
+                        .font(.system(size: 19, weight: .semibold, design: .rounded))
+                }
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(15)
             }
         }
         .padding(.horizontal, 10)
