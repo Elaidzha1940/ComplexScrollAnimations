@@ -12,6 +12,7 @@ import SwiftUI
 struct MainC: View {
     // View Properties
     @State private var allExpense: [Expense] = []
+    @State private var activeCard: UUID?
     
     // Envirnment Values
     @Environment(\.colorScheme) private var scheme
@@ -28,6 +29,7 @@ struct MainC: View {
                     
                     GeometryReader {
                         let rect = $0.frame(in: .scrollView)
+                        let minY = rect.minX.rounded()
                         
                         // MARK: Card View
                         ScrollView(.horizontal) {
@@ -98,15 +100,16 @@ struct MainC: View {
                             .offset(x: -40, y: -50)
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 30, style: .circular))
+                    .scaleEffect(scale, anchor: .bottom)
                 
                 VStack(alignment: .leading, spacing: 5) {
                     Spacer(minLength: 0)
                     
-                    Text("Current Balance \(progress)")
-                        .font(.system(size: 15, weight: .medium, design: .rounded))
+                    Text("Current Balance")
+                        .font(.system(size: 14, weight: .medium, design: .rounded))
                     
                     Text(card.balance)
-                        .font(.system(size: 19, weight: .semibold, design: .rounded))
+                        .font(.system(size: 22, weight: .bold, design: .rounded))
                 }
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)

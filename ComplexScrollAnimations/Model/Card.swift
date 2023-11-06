@@ -16,10 +16,10 @@ struct Card: Identifiable {
 }
 
 var cards : [Card] = [
-    Card(BgColor: .black.opacity(0.6), balance: "128,000"),
-    Card(BgColor: .black.opacity(0.7), balance: "193,000"),
-    Card(BgColor: .gray.opacity(0.6), balance: "55,000"),
-    Card(BgColor: .black.opacity(0.5), balance: "309,333"),
-    Card(BgColor: .black.opacity(0.2), balance: "103,222"),
+    Card(BgColor: .black.opacity(0.6), balance: "$ 128,000"),
+    Card(BgColor: .black.opacity(0.7), balance: "$ 193,000"),
+    Card(BgColor: .gray.opacity(0.6), balance: "$ 55,000"),
+    Card(BgColor: .black.opacity(0.5), balance: "$ 309,333"),
+    Card(BgColor: .black.opacity(0.2), balance: "$ 103,222"),
     
 ]
