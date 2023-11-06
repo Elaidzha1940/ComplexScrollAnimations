@@ -98,9 +98,6 @@ struct MainC: View {
                         
                         RoundedRectangle(cornerRadius: 30 * progress, style: .circular)
                             .fill(scheme == .dark ? .black : .white)
-//                            .overlay(alignment: .top) {
-//                                Text("\(progress)")
-//                            }
                         
                         // Limiting Bg Scroll belowthe header
                             .visualEffect { content, proxy in
@@ -112,6 +109,7 @@ struct MainC: View {
             }
             .padding(.vertical, 15)
         }
+        .scrollTargetBehavior(CustomScrollBehavior())
         .scrollIndicators(.hidden)
         .onAppear {
             if activeCard == nil {
@@ -131,14 +129,13 @@ struct MainC: View {
         
         return minY < 100 ? -minY + 100 : 0
     }
-    
-    
+
     // MARK: Card View
     @ViewBuilder
     func CardView(_ card: Card) -> some View {
         GeometryReader {
             let rect = $0.frame(in: .scrollView(axis: .vertical))
-            let minY = rect.minY
+            let _minY = rect.minY
             let topValue: CGFloat = 75.0
             
             let offset = min(rect.minY - topValue, 0)
@@ -205,6 +202,18 @@ struct MainC: View {
         .padding(.vertical, 5)
     }
 }
+
+// Custom Scroll Target Behavior
+// AKA scrollViewEndDragging in UIKit
+
+struct CustomScrollBehavior: ScrollTargetBehavior {
+    func updateTarget(_ target: inout ScrollTarget, context: TargetContext) {
+        if target.rect.minY < 75 {
+            target.rect = .zero
+        }
+    }
+}
+
 
 #Preview {
     ContentView()
