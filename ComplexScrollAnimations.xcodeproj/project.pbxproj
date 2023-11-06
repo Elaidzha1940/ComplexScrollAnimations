@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4724D0A2AF862B100220559 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4724D092AF862B100220559 /* Expense.swift */; };
 		E4B8E37C2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E37B2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift */; };
 		E4B8E37E2AF812BB0009C0AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E37D2AF812BB0009C0AD /* ContentView.swift */; };
 		E4B8E3802AF812BC0009C0AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4B8E37F2AF812BC0009C0AD /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4724D092AF862B100220559 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		E4B8E3782AF812BB0009C0AD /* ComplexScrollAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComplexScrollAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B8E37B2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexScrollAnimationsApp.swift; sourceTree = "<group>"; };
 		E4B8E37D2AF812BB0009C0AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4724D082AF862A000220559 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4724D092AF862B100220559 /* Expense.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E4B8E36F2AF812BB0009C0AD = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +61,7 @@
 		E4B8E37A2AF812BB0009C0AD /* ComplexScrollAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				E4724D082AF862A000220559 /* Model */,
 				E4B8E37B2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift */,
 				E4B8E37D2AF812BB0009C0AD /* ContentView.swift */,
 				E4B8E37F2AF812BC0009C0AD /* Assets.xcassets */,
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4724D0A2AF862B100220559 /* Expense.swift in Sources */,
 				E4B8E37E2AF812BB0009C0AD /* ContentView.swift in Sources */,
 				E4B8E37C2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift in Sources */,
 			);

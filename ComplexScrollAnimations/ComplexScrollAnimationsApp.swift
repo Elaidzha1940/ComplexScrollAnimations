@@ -1,9 +1,12 @@
+//  /*
 //
-//  ComplexScrollAnimationsApp.swift
-//  ComplexScrollAnimations
+//  Project: ComplexScrollAnimations
+//  File: ComplexScrollAnimationsApp.swift
+//  Created b:y Elaidzha Shchukin
+//  Date: 05.11.2023
 //
-//  Created by Elaidzha Shchukin on 05.11.2023.
-//
+//  */
+
 
 import SwiftUI
 
