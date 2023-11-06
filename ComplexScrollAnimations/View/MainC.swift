@@ -77,6 +77,11 @@ struct MainC: View {
         GeometryReader {
             let rect = $0.frame(in: .scrollView(axis: .vertical))
             let minY = rect.minY
+            let topValue: CGFloat = 75.0
+            
+            let offset = min(rect.minY - topValue, 0)
+            let progress = max(min(-offset / topValue, 1), 0)
+            let scale: CGFloat = 1 + progress
             
             ZStack {
                 Rectangle()
@@ -97,7 +102,7 @@ struct MainC: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Spacer(minLength: 0)
                     
-                    Text("Current Balance")
+                    Text("Current Balance \(progress)")
                         .font(.system(size: 15, weight: .medium, design: .rounded))
                     
                     Text(card.balance)
