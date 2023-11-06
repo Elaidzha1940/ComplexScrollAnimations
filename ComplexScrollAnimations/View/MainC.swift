@@ -35,14 +35,32 @@ struct MainC: View {
                         ScrollView(.horizontal) {
                             LazyHStack(spacing: 0) {
                                 ForEach(cards) { card in
-                                    CardView(card)
-                                        .containerRelativeFrame(.horizontal)
-                                    
+                                    ZStack {
+                                        if minY == 75.0 {
+                                            // Not Scrolled
+                                            // Showing All Cards
+                                            CardView(card)
+                                        } else {
+                                            // Scrolled
+                                            // Showing Only Selected Card
+                                            if activeCard == card.id {
+                                                CardView(card)
+                                            } else {
+                                                Rectangle()
+                                                    .fill(.clear)
+                                            }
+                                        }
+                                    }
+                                    .containerRelativeFrame(.horizontal)
                                 }
                             }
                             .scrollTargetLayout()
                         }
+                        .scrollPosition(id: $activeCard)
                         .scrollTargetBehavior(.paging)
+                        .scrollClipDisabled()
+                        .scrollIndicators(.hidden)
+                        .scrollClipDisabled(minY != 75.0)
                     }
                     .frame(height: 120)
                 }
@@ -70,7 +88,14 @@ struct MainC: View {
         }
         .scrollIndicators(.hidden)
         .onAppear {
-            allExpense = expenses.shuffled()
+            if activeCard == nil {
+                activeCard = cards.first?.id
+            }
+        }
+        .onChange(of: activeCard) { oldValue, newValue in
+            withAnimation(.spring()) {
+                allExpense = expenses.shuffled()
+            }
         }
     }
     // MARK: Card View
@@ -115,6 +140,10 @@ struct MainC: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(15)
             }
+            .offset(y: -offset)
+            
+            // Moving til Top Value
+            .offset(y: progress * -topValue)
         }
         .padding(.horizontal, 10)
     }
