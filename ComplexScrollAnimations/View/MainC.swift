@@ -36,7 +36,7 @@ struct MainC: View {
                             Text("Filter By")
                             Image(systemName: "chevron.down")
                         }
-                        .font(.system(size: 15, weight: .bold, design: .rounded))
+                        .font(.system(size: 15, weight: .semibold, design: .rounded))
                         .foregroundColor(.gray)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -55,7 +55,20 @@ struct MainC: View {
     // Expense Card View
     @ViewBuilder
     func ExpenseCardView(_ expense: Expense) -> some View {
-        
+        HStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(expense.product)
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                
+                Text(expense.spend)
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .foregroundColor(.gray)
+            }
+            Spacer(minLength: 0)
+            
+            Text(expense.amountSpent)
+                .font(.system(size: 15, weight: .bold, design: .rounded))
+        }
     }
 }
 
