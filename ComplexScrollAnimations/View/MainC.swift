@@ -28,7 +28,16 @@ struct MainC: View {
                     GeometryReader {
                         let rect = $0.frame(in: .scrollView)
                         
-                        // Card View
+                        // MARK: Card View
+                        ScrollView(.horizontal) {
+                            LazyHStack(spacing: 0) {
+                                ForEach(cards) { card in
+                                    CardView(card)
+                                        .containerRelativeFrame(.horizontal)
+                                    
+                                }
+                            }
+                        }
                     }
                     .frame(height: 120)
                 }
@@ -59,13 +68,33 @@ struct MainC: View {
             allExpense = expenses.shuffled()
         }
     }
-    // Card View
+    // MARK: Card View
     @ViewBuilder
-    func CardView() -> some View {
-        
+    func CardView(_ card: Card) -> some View {
+        GeometryReader {
+            let rect = $0.frame(in: .scrollView(axis: .vertical))
+            
+            ZStack {
+                Rectangle()
+                //RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(card.BgColor)
+                    .overlay(alignment: .leading) {
+                        Circle()
+                            .fill(card.BgColor)
+                            .overlay {
+                                Circle()
+                                    .fill(.white.opacity(0.2))
+                            }
+                            .scaleEffect(2, anchor: .topTrailing)
+                            .offset(x: -40, y: -50)
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 30, style: .circular))
+            }
+        }
+        .padding(.horizontal, 10)
     }
     
-    // Expense Card View
+    // MARK: Expense Card View
     @ViewBuilder
     func ExpenseCardView(_ expense: Expense) -> some View {
         HStack(spacing: 0) {
