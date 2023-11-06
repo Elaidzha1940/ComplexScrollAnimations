@@ -13,6 +13,9 @@ struct MainC: View {
     // View Properties
     @State private var allExpense: [Expense] = []
     
+    // Envirnment Values
+    @Environment(\.colorScheme) private var scheme
+    
     var body: some View {
         
         ScrollView(.vertical) {
@@ -24,6 +27,8 @@ struct MainC: View {
                     
                     GeometryReader {
                         let rect = $0.frame(in: .scrollView)
+                        
+                        // Card View
                     }
                     .frame(height: 120)
                 }
@@ -50,6 +55,14 @@ struct MainC: View {
             .padding(.vertical, 15)
         }
         .scrollIndicators(.hidden)
+        .onAppear {
+            allExpense = expenses.shuffled()
+        }
+    }
+    // Card View
+    @ViewBuilder
+    func CardView() -> some View {
+        
     }
     
     // Expense Card View
@@ -58,17 +71,19 @@ struct MainC: View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(expense.product)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .font(.system(size: 17, weight: .semibold, design: .rounded))
                 
                 Text(expense.spend)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundColor(.gray)
             }
             Spacer(minLength: 0)
             
             Text(expense.amountSpent)
-                .font(.system(size: 15, weight: .bold, design: .rounded))
+                .font(.system(size: 17, weight: .bold, design: .rounded))
         }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 5)
     }
 }
 

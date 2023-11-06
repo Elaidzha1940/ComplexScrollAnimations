@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E4724D0A2AF862B100220559 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4724D092AF862B100220559 /* Expense.swift */; };
 		E4724D0D2AF8654800220559 /* MainC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4724D0C2AF8654800220559 /* MainC.swift */; };
+		E4724D0F2AF91D9F00220559 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4724D0E2AF91D9F00220559 /* Card.swift */; };
 		E4B8E37C2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E37B2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift */; };
 		E4B8E37E2AF812BB0009C0AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E37D2AF812BB0009C0AD /* ContentView.swift */; };
 		E4B8E3802AF812BC0009C0AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4B8E37F2AF812BC0009C0AD /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		E4724D092AF862B100220559 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		E4724D0C2AF8654800220559 /* MainC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainC.swift; sourceTree = "<group>"; };
+		E4724D0E2AF91D9F00220559 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E4B8E3782AF812BB0009C0AD /* ComplexScrollAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComplexScrollAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B8E37B2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexScrollAnimationsApp.swift; sourceTree = "<group>"; };
 		E4B8E37D2AF812BB0009C0AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				E4724D092AF862B100220559 /* Expense.swift */,
+				E4724D0E2AF91D9F00220559 /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				E4724D0A2AF862B100220559 /* Expense.swift in Sources */,
 				E4B8E37E2AF812BB0009C0AD /* ContentView.swift in Sources */,
+				E4724D0F2AF91D9F00220559 /* Card.swift in Sources */,
 				E4724D0D2AF8654800220559 /* MainC.swift in Sources */,
 				E4B8E37C2AF812BB0009C0AD /* ComplexScrollAnimationsApp.swift in Sources */,
 			);
