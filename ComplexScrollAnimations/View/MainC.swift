@@ -83,6 +83,32 @@ struct MainC: View {
                     }
                 }
                 .padding(15)
+                .mask {
+                    Rectangle()
+                        .visualEffect { content, proxy in
+                            content
+                                .offset(y: backgroundLimitOffset(proxy))
+                        }
+                }
+                .background(
+                    GeometryReader {
+                        let rect = $0.frame(in: .scrollView)
+                        let minY = min(rect.minY - 125, 0)
+                        let progress = max(min(-minY / 25, 1), 0)
+                        
+                        RoundedRectangle(cornerRadius: 30 * progress, style: .circular)
+                            .fill(scheme == .dark ? .black : .white)
+//                            .overlay(alignment: .top) {
+//                                Text("\(progress)")
+//                            }
+                        
+                        // Limiting Bg Scroll belowthe header
+                            .visualEffect { content, proxy in
+                                content
+                                    .offset(y: backgroundLimitOffset(proxy))
+                            }
+                    }
+                )
             }
             .padding(.vertical, 15)
         }
@@ -98,6 +124,15 @@ struct MainC: View {
             }
         }
     }
+    
+    // Bg Limit Offset
+    func backgroundLimitOffset(_ proxy: GeometryProxy) -> CGFloat {
+        let minY = proxy.frame(in: .scrollView).minY
+        
+        return minY < 100 ? -minY + 100 : 0
+    }
+    
+    
     // MARK: Card View
     @ViewBuilder
     func CardView(_ card: Card) -> some View {
@@ -139,6 +174,7 @@ struct MainC: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(15)
+                .offset(y: progress * -25)
             }
             .offset(y: -offset)
             
